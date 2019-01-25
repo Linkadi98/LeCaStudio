@@ -1,5 +1,6 @@
 package Login;
 
+import com.jfoenix.controls.JFXAlert;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -67,14 +68,23 @@ public class LoginController {
     public void passwordKeyPressed(KeyEvent keyEvent) {
         if(keyEvent.getCode() == KeyCode.ENTER) {
             if(adminName.getText().equals("LeCanh") && password.getText().equals("1234")) {
-                System.out.println("Thanh cong");
+                System.out.println("Thành công");
             }
             else {
                 adminName.setText("");
                 password.setText("");
                 adminName.setFocusColor(Color.RED);
                 password.setFocusColor(Color.RED);
+
             }
         }
     }
+
+    private boolean isCorrect(String name, String password) {
+        //kết nối với cơ sở dữ liệu
+        // check tên và mật khẩu của người dùng
+        return false;
+    }
+
+
 }

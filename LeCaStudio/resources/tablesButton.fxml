@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.tablesButton.ButtonBoxController">
+   <children>
+      <VBox fx:id="buttonBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="125.0">
+         <children>
+            <JFXButton fx:id="addItem" onAction="#addItemOnAction" onMousePressed="#addItemMousePressed" prefHeight="60.0" prefWidth="126.0" text="Add Item" />
+            <JFXButton prefHeight="60.0" prefWidth="126.0" text="Update Item" />
+            <JFXButton prefHeight="60.0" prefWidth="126.0" text="Delete Item" />
+            <JFXButton prefHeight="60.0" prefWidth="126.0" text="Export data" />
+            <JFXButton prefHeight="60.0" prefWidth="126.0" text="Unknown feature" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

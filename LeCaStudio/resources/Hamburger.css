@@ -1,0 +1,29 @@
+.jfx-hamburger StackPane {
+	-fx-background-color: Gray;
+}
+
+.button {
+    -fx-border-style: solid none none none;
+    -fx-border-width: 2;
+    -fx-border-color: yellow;
+}
+
+.hbox {
+    -fx-border-style: solid none solid none;
+    -fx-border-width: 2;
+    -fx-border-color: yellow;
+}
+
+.tab {
+    -fx-background-color: #2A2C36;
+    -fx-pref-width: 170;
+    -fx-pref-height: 43;
+}
+
+.tab-header-background {
+    -fx-background-color: #2A2C36;
+}
+
+.jfx-tab-pane .tab-selected-line {
+    -fx-background-color: transparent;
+}
