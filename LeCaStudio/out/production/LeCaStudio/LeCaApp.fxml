@@ -2,75 +2,91 @@
 
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
-<?import com.jfoenix.controls.JFXTabPane?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.mainScene.MainAppController">
-   <center>
-      <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="623.0" prefWidth="1117.0" style="-fx-background-color: #2A2C36;">
-         <children>
-            <JFXTabPane fx:id="tabPane" layoutY="7.0" onMousePressed="#tabPaneMousePressed" prefHeight="623.0" prefWidth="1051.0" style="-fx-background-color: #2A2C36;" styleClass="tab-selected-line" stylesheets="@Hamburger.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="63.0" AnchorPane.topAnchor="0.0">
-               <tabs>
-                  <Tab text="Admin">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="517.0" prefWidth="696.0" />
-                    </content>
-                  </Tab>
-                  <Tab closable="false" text="Photo package">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="593.0" prefWidth="1067.0" />
-                     </content>
-                  </Tab>
-                  <Tab text="Customer">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="594.0" prefWidth="1157.0" />
-                     </content>
-                  </Tab>
-                  <Tab text="Employee">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                     </content>
-                  </Tab>
-                  <Tab text="Order">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                     </content>
-                  </Tab>
-                  <Tab text="Search">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="593.0" prefWidth="1078.0" />
-                     </content>
-                  </Tab>
-               </tabs>
-            </JFXTabPane>
-            <Label layoutX="1086.0" layoutY="-2.0" prefHeight="33.0" prefWidth="35.0" text="Close" textFill="#f5eeee" />
-         </children>
-      </AnchorPane>
-   </center>
+<BorderPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Main.MainAppController">
    <left>
-      <Pane prefHeight="623.0" prefWidth="227.0" style="-fx-background-color: #2A2C36;" BorderPane.alignment="CENTER">
+      <Pane fx:id="leftSidePane" prefHeight="623.0" prefWidth="196.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <StackPane fx:id="stackPane" layoutX="-4.0" layoutY="53.0" prefHeight="570.0" prefWidth="250.0">
+            <StackPane fx:id="stackPane" layoutX="-4.0" prefHeight="623.0" prefWidth="201.0" style="-fx-background-color: gray;">
                <children>
-                  <JFXDrawer fx:id="drawer" miniDrawerSize="0.0" prefHeight="570.0" prefWidth="225.0" style="-fx-background-color: #2A2C36;">
-                     <children>
-                        <Label text="Ads" textFill="#edebeb" />
-                     </children></JFXDrawer>
+                  <JFXDrawer fx:id="drawer" miniDrawerSize="0.0" prefHeight="623.0" prefWidth="95.0" />
                </children>
             </StackPane>
-            <JFXHamburger fx:id="hamburger" alignment="CENTER" layoutX="6.0" layoutY="9.0" onMousePressed="#hamburgerMousePressed" prefHeight="30.0" prefWidth="56.0" styleClass="jfx-hamburger" stylesheets="@Hamburger.css" />
-            <Label fx:id="navigatorBar" alignment="CENTER" layoutX="60.0" layoutY="-1.0" prefHeight="49.0" prefWidth="168.0" text="Navigator bar" textAlignment="CENTER" textFill="#fffefe">
+         </children>
+      </Pane>
+   </left>
+   <top>
+      <HBox prefHeight="49.0" prefWidth="1346.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXHamburger fx:id="hamburger" alignment="CENTER" onMousePressed="#hamburgerMousePressed" prefHeight="30.0" prefWidth="56.0" styleClass="jfx-hamburger" stylesheets="@CSS/Hamburger.css" />
+            <Label fx:id="navigatorBar" alignment="CENTER" prefHeight="49.0" prefWidth="168.0" text="Navigator bar" textAlignment="CENTER" textFill="#fffefe">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
+            <Pane prefHeight="50.0" prefWidth="82.0" />
+            <MenuButton fx:id="home" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMousePressed="#homeOnMousePressed" prefHeight="50.0" prefWidth="110.0" style="-fx-background-color: transparent;" stylesheets="@CSS/menuButtonStyle.css" text="Home" />
+            <MenuButton fx:id="admin" alignment="CENTER" mnemonicParsing="false" onMousePressed="#adminOnMousePressed" prefHeight="50.0" prefWidth="110.0" style="-fx-background-color: transparent;" stylesheets="@CSS/menuButtonStyle.css" text="Admin">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+            </MenuButton>
+            <MenuButton fx:id="employee" alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="110.0" style="-fx-background-color: transparent;" stylesheets="@CSS/menuButtonStyle.css" text="Employee">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+            </MenuButton>
+            <MenuButton fx:id="customer" alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="110.0" style="-fx-background-color: transparent;" stylesheets="@CSS/menuButtonStyle.css" text="Customer">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+            </MenuButton>
+            <MenuButton fx:id="order" alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="110.0" style="-fx-background-color: transparent;" stylesheets="@CSS/menuButtonStyle.css" text="Order">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+            </MenuButton>
+            <MenuButton fx:id="photo" alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="122.0" style="-fx-background-color: transparent;" stylesheets="@CSS/menuButtonStyle.css" text="Photo package">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+            </MenuButton>
+            <MenuButton fx:id="search" alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="110.0" style="-fx-background-color: transparent;" stylesheets="@CSS/menuButtonStyle.css" text="Search">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+            </MenuButton>
+            <MenuButton fx:id="search1" alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="114.0" style="-fx-background-color: transparent;" stylesheets="@CSS/menuButtonStyle.css" text="Go to LeCa.ml">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+            </MenuButton>
+            <Pane prefHeight="50.0" prefWidth="270.0">
+               <children>
+                  <Label layoutX="166.0" layoutY="5.0" text="hide" />
+                  <Label layoutX="197.0" layoutY="5.0" text="mini" />
+                  <Label layoutX="228.0" layoutY="5.0" text="close" />
+               </children>
+            </Pane>
          </children>
-      </Pane>
-   </left>
+      </HBox>
+   </top>
+   <center>
+      <StackPane fx:id="stackPaneCenter" prefHeight="623.0" prefWidth="922.0" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>

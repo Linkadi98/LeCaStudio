@@ -39,12 +39,12 @@
                </contextMenu></JFXPasswordField>
             <ImageView fitHeight="39.0" fitWidth="32.0" layoutX="73.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../iconLogin/icons8_User_Account_50px.png" />
+                  <Image url="@../../resources/ICON/icons8_User_Account_50px.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="26.0" fitWidth="32.0" layoutX="76.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../iconLogin/icons8_Password_50px_1.png" />
+                  <Image url="@../../resources/ICON/icons8_Password_50px_1.png" />
                </image>
             </ImageView>
             <JFXButton buttonType="RAISED" layoutX="200.0" layoutY="191.0" onAction="#cancel" prefHeight="32.0" prefWidth="80.0" style="-fx-background-radius: 50; -fx-background-color: White;" text="Cancel" />

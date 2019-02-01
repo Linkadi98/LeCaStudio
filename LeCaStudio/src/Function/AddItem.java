@@ -16,4 +16,12 @@ public class AddItem {
     public void packageTable(String sql) {
 
     }
+
+    public void orderTable(String sql) {
+
+    }
+
+    public void employeeTable(String sql) {
+
+    }
 }

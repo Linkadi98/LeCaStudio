@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="584.0" prefWidth="126.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Buttons.ButtonBoxController">
+   <children>
+      <VBox fx:id="buttonBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="526.0" prefWidth="126.4" styleClass="vbox" stylesheets="@CSS/Hamburger.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXButton fx:id="addItem" onAction="#addItemOnAction" onMousePressed="#addItemMousePressed" prefHeight="60.0" prefWidth="126.0" text="Add Item" textFill="#efebeb">
+               <font>
+                  <Font size="14.0" />
+               </font></JFXButton>
+            <JFXButton prefHeight="60.0" prefWidth="126.0" text="Update Item" textFill="#efebeb">
+               <font>
+                  <Font size="14.0" />
+               </font></JFXButton>
+            <JFXButton prefHeight="60.0" prefWidth="126.0" text="Delete Item" textFill="#efebeb">
+               <font>
+                  <Font size="14.0" />
+               </font></JFXButton>
+            <JFXButton prefHeight="60.0" prefWidth="126.0" text="Export data" textFill="#efebeb">
+               <font>
+                  <Font size="14.0" />
+               </font></JFXButton>
+            <JFXButton prefHeight="60.0" prefWidth="126.0" text="Unknown feature" textFill="#efebeb">
+               <font>
+                  <Font size="14.0" />
+               </font></JFXButton>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
