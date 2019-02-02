@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="339.0" prefWidth="553.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Admin.AddingAdminController">
+   <children>
+      <VBox layoutX="68.0" layoutY="70.0" prefHeight="200.0" prefWidth="214.0">
+         <children>
+            <HBox prefHeight="49.0" prefWidth="100.0">
+               <children>
+                  <JFXTextField fx:id="id" labelFloat="true" prefHeight="25.0" prefWidth="136.0" promptText="ID" />
+               </children>
+            </HBox>
+            <HBox prefHeight="49.0" prefWidth="100.0">
+               <children>
+                  <JFXTextField fx:id="loginName" labelFloat="true" prefHeight="25.0" prefWidth="134.0" promptText="Login name" />
+               </children>
+            </HBox>
+            <HBox prefHeight="49.0" prefWidth="100.0">
+               <children>
+                  <JFXTextField fx:id="password" labelFloat="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Password" />
+               </children>
+            </HBox>
+            <HBox prefHeight="49.0" prefWidth="100.0">
+               <children>
+                  <JFXTextField fx:id="fullName" labelFloat="true" promptText="Full name" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutX="344.0" layoutY="70.0" prefHeight="200.0" prefWidth="201.0">
+         <children>
+            <HBox prefHeight="49.0" prefWidth="100.0">
+               <children>
+                  <JFXTextField fx:id="note" labelFloat="true" promptText="Note" />
+               </children>
+            </HBox>
+            <HBox prefHeight="49.0" prefWidth="100.0">
+               <children>
+                  <JFXTextField fx:id="phoneNumber" labelFloat="true" promptText="Phone number" />
+               </children>
+            </HBox>
+            <HBox prefHeight="49.0" prefWidth="100.0">
+               <children>
+                  <JFXTextField fx:id="email" labelFloat="true" promptText="Email" />
+               </children>
+            </HBox>
+            <HBox prefHeight="49.0" prefWidth="100.0">
+               <children>
+                  <JFXTextField fx:id="permision" labelFloat="true" promptText="Permission" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <HBox layoutX="172.0" layoutY="287.0" prefHeight="38.0" prefWidth="214.0">
+         <children>
+            <JFXButton defaultButton="true" onAction="#addOnAction" prefHeight="47.0" prefWidth="52.0" text="Add">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton defaultButton="true" onAction="#continueAddOnAction" prefHeight="38.0" prefWidth="118.0" text="Add and continue">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton alignment="CENTER" cancelButton="true" onAction="#cancelOnAction" prefHeight="38.0" prefWidth="56.0" text="Cancel">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </HBox>
+      <Label layoutX="169.0" layoutY="14.0" text="Only for administrator">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -12,7 +12,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/Icon/jfoenix-9.0.8.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/controlsfx-9.0.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -21,7 +21,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/mysql-connector-java-8.0.12.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/jfoenix-9.0.8.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -30,7 +30,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/Icon/controlsfx-9.0.0/controlsfx-9.0.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/mysql-connector-java-8.0.14.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

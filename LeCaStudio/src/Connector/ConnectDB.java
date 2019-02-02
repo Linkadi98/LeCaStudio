@@ -21,9 +21,9 @@ public class ConnectDB {
         return connection;
     }
         //Testing connection between java and database
-//    public static void main(String[] args) {
-//        ConnectDB connectDB = new ConnectDB();
-//        connectDB.getConnect();
-//
-//    }
+    public static void main(String[] args) {
+        ConnectDB connectDB = new ConnectDB();
+        connectDB.getConnect();
+
+    }
 }

@@ -13,9 +13,9 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Main.MainAppController">
    <left>
-      <Pane fx:id="leftSidePane" prefHeight="623.0" prefWidth="196.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+      <Pane fx:id="leftSidePane" prefHeight="623.0" prefWidth="196.0" BorderPane.alignment="CENTER">
          <children>
-            <StackPane fx:id="stackPane" layoutX="-4.0" prefHeight="623.0" prefWidth="201.0" style="-fx-background-color: gray;">
+            <StackPane fx:id="stackPane" layoutX="-4.0" prefHeight="623.0" prefWidth="201.0">
                <children>
                   <JFXDrawer fx:id="drawer" miniDrawerSize="0.0" prefHeight="623.0" prefWidth="95.0" />
                </children>

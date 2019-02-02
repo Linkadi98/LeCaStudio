@@ -1,5 +1,6 @@
 package UI.Admin;
 
+import Connector.ConnectDB;
 import Objects.Admin;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
@@ -14,9 +15,13 @@ import javafx.scene.control.TreeTableColumn;
 import javafx.util.Callback;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
-public class AdminController implements Initializable {
+public class AdminTableController implements Initializable {
     public JFXTreeTableView<Admin> adminTreeTable;
 
 
@@ -67,13 +72,38 @@ public class AdminController implements Initializable {
         permission.setCellValueFactory(param -> param.getValue().getValue().permissionProperty());
 
         ObservableList<Admin> admins = FXCollections.observableArrayList();
-        admins.add(new Admin("1", "LeCanh", "1234", "Lê Thanh Cảnh", "abc", "123456789", "lecanh", "1"));
-        admins.add(new Admin("1", "LeCanh", "1234", "Lê Thanh Cảnh", "abc", "123456789", "lecanh", "1"));
+        addAdminsToTable(admins);
 
         TreeItem<Admin> treeItemRoot = new RecursiveTreeItem<>(admins, RecursiveTreeObject::getChildren);
         adminTreeTable.getColumns().setAll(idAdmin, loginName, password, fullName, note, email, permission);
         adminTreeTable.setRoot(treeItemRoot);
         adminTreeTable.setShowRoot(false);
 
+    }
+
+    public void addAdminsToTable(ObservableList<Admin> admins) {
+        ConnectDB connectDB = new ConnectDB();
+        Connection connection = connectDB.getConnect();
+
+        String sql = "SELECT t.* FROM datapa02.nguoidung t";
+
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()) {
+                admins.add(new Admin(
+                        rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7),
+                        rs.getString(8)
+                ));
+            }
+        } catch (SQLException e) {
+            System.out.println("Unsucessful");
+        }
     }
 }

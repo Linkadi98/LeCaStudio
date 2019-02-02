@@ -3,6 +3,7 @@ package UI.Main;
 import Animation.SceneTransitionAnimation;
 import Animation.TextChangeAnimation;
 import Models.TableModel;
+import UI.Admin.AddingAdminController;
 import UI.Buttons.ButtonBoxController;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
@@ -150,14 +151,17 @@ public class MainAppController implements Initializable {
     public void homeOnMousePressed(MouseEvent event) throws IOException {
         SceneTransitionAnimation sceneTransitionAnimation = new SceneTransitionAnimation();
         sceneTransitionAnimation.sceneTransition(stackPaneCenter, navigatorBar, "Home");
-
+//        leftSidePane.getChildren().remove();
     }
 
     public void adminOnMousePressed(MouseEvent event) throws IOException {
         SceneTransitionAnimation sceneTransitionAnimation = new SceneTransitionAnimation();
 //        sceneTransitionAnimation.hideCurrentScene(stackPaneCenter);
         sceneTransitionAnimation.sceneTransition(stackPaneCenter, navigatorBar, "Admin");
-        leftSidePane.getChildren().add(FXMLLoader.load(getClass().getResource("/LEFT_SIDE_PANE/AdminLSP.fxml")));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/LEFT_SIDE_PANE/AdminLSP.fxml"));
+        leftSidePane.getChildren().add(loader.load());
+
+
 
     }
 }

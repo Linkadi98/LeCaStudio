@@ -1,6 +1,7 @@
 package UI.Main;
 
 import Models.TableModel;
+import Objects.Admin;
 import UI.Buttons.ButtonBoxController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,12 +10,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.io.File;
-
-public class MainTest extends Application {
+public class Main extends Application {
     private final Model model = new Model();
     private TableModel tableModel = new TableModel();
     private TableModel tableModel2 = new TableModel();
+    private Admin admin;
     @Override
     public void start(Stage primaryStage) throws Exception{
         FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/LeCaApp.fxml"));
@@ -42,10 +42,11 @@ public class MainTest extends Application {
         mainAppController.setTableModel(tableModel.model);
         buttonBoxController.setTableModel(tableModel.model);
 
+
     }
 
 
     public static void main(String[] args) {
-        Application.launch(MainTest.class, new String[0]);
+        Application.launch(Main.class, new String[0]);
     }
 }
