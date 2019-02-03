@@ -24,13 +24,13 @@ public class AddingAdminController implements Initializable {
     public JFXTextField permision;
     public Connection connection;
 
-    public JFXTreeTableView tableView;
+    public JFXTreeTableView<Admin> tableView;
 
     public JFXTreeTableView getTableView() {
         return tableView;
     }
 
-    public void setTableView(JFXTreeTableView tableView) {
+    public void setTableView(JFXTreeTableView<Admin> tableView) {
         this.tableView = tableView;
     }
 
