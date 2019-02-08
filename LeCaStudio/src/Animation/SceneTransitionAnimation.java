@@ -14,9 +14,8 @@ import java.awt.*;
 import java.io.IOException;
 
 public class SceneTransitionAnimation {
-    public FXMLLoader loader;
 
-    public void sceneTransition (StackPane stackPaneCenter, Label navigatorBar, String nameOfPage, FXMLLoader loader, AnchorPane root) throws IOException {
+    public void sceneTransition (StackPane stackPaneCenter, Label navigatorBar, String nameOfPage, AnchorPane root) throws IOException {
 
         TextChangeAnimation textChangeAnimation = new TextChangeAnimation();
         textChangeAnimation.textChange(navigatorBar, nameOfPage);
@@ -30,30 +29,29 @@ public class SceneTransitionAnimation {
         timeline.play();
     }
 
-    public void hideCurrentScene(StackPane stackPaneCenter, Label navigatorBar, String nameOfPage, FXMLLoader loader, AnchorPane root) {
-        for(Node node: stackPaneCenter.getChildren()){
-            FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.5), node);
-            fadeTransition.setFromValue(1);
-            fadeTransition.setToValue(.1);
-            fadeTransition.play();
-            fadeTransition.setOnFinished((e -> {
-                try {
-                    sceneTransition(stackPaneCenter, navigatorBar, nameOfPage, loader, root);
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-            }));
+    public void hideCurrentScene(StackPane stackPaneCenter, Label navigatorBar, String nameOfPage, AnchorPane root) {
+        if(stackPaneCenter.getChildren().isEmpty()) {
+            try {
+                sceneTransition(stackPaneCenter, navigatorBar, nameOfPage, root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-
-
-
-
-
-//        Timeline timeline = new Timeline();
-//        KeyValue keyValue = new KeyValue(currentScene.getRoot().translateXProperty(), Integer.MIN_VALUE, Interpolator.LINEAR);
-//        KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.5), keyValue);
-//        timeline.getKeyFrames().add(keyFrame);
-//        timeline.play();
+        else {
+            for (Node node : stackPaneCenter.getChildren()) {
+                FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.5), node);
+                fadeTransition.setFromValue(1);
+                fadeTransition.setToValue(.1);
+                fadeTransition.play();
+                fadeTransition.setOnFinished((e -> {
+                    try {
+                        sceneTransition(stackPaneCenter, navigatorBar, nameOfPage, root);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                }));
+            }
+        }
 
     }
 

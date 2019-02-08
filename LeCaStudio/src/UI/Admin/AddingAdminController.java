@@ -128,13 +128,14 @@ public class AddingAdminController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+//        System.exit(0);
     }
 
     public void continueAddOnAction(ActionEvent actionEvent) {
     }
 
     public void cancelOnAction(ActionEvent actionEvent) {
-
+        getAdminModel().getStage().hide();
     }
 
     public void setDefault(String blank) {
@@ -142,6 +143,8 @@ public class AddingAdminController implements Initializable {
     }
 
     public void insertAdmin() throws SQLException {
+        ConnectDB connectDB = new ConnectDB();
+        connection = connectDB.getConnect();
         String sql = "insert into datapa02.nguoidung values (?,?,?,?,?,?,?,?)";
         PreparedStatement pst = connection.prepareStatement(sql);
         pst.setString(1,getId().getText());
@@ -154,22 +157,14 @@ public class AddingAdminController implements Initializable {
         pst.setString(8,getPermision().getText());
         pst.addBatch();
         pst.executeUpdate();
-        setAdmin(new Admin(
-                getId().getText(),
-                getLoginName().getText(),
-                getPassword().getText(),
-                getFullName().getText(),
-                getNote().getText(),
-                getPhoneNumber().getText(),
-                getEmail().getText(),
-                getPermision().getText()
-        ));
+
+        getAdminModel().reloadTable();
+        getAdminModel().getStage().hide();
 
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ConnectDB connectDB = new ConnectDB();
-        connection = connectDB.getConnect();
+
     }
 }

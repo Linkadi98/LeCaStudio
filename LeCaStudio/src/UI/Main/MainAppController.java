@@ -155,25 +155,32 @@ public class MainAppController implements Initializable {
         FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/PAGES/Home.fxml"));
         AnchorPane homeRoot = homeLoader.load();
         SceneTransitionAnimation sceneTransitionAnimation = new SceneTransitionAnimation();
-        sceneTransitionAnimation.sceneTransition(stackPaneCenter, navigatorBar, "Home", homeLoader, homeRoot);
+        sceneTransitionAnimation.sceneTransition(stackPaneCenter, navigatorBar, "Home", homeRoot);
+        leftSidePane.getChildren().remove(leftSidePane.getChildren().size() - 1);
 //        leftSidePane.getChildren()
     }
 
     public void adminOnMousePressed(MouseEvent event) throws IOException {
+        adminModel = new AdminModel();
         FXMLLoader adminLoader = new FXMLLoader(getClass().getResource("/PAGES/Admin.fxml"));
         FXMLLoader adminLSPLoader = new FXMLLoader(getClass().getResource("/LEFT_SIDE_PANE/AdminLSP.fxml"));
+
         AnchorPane root = adminLoader.load();
-        SceneTransitionAnimation sceneTransitionAnimation = new SceneTransitionAnimation();
-//        sceneTransitionAnimation.hideCurrentScene(stackPaneCenter);
-        sceneTransitionAnimation.sceneTransition(stackPaneCenter, navigatorBar, "Admin", adminLoader, root);
 
         leftSidePane.getChildren().add(adminLSPLoader.load());
         AdminTableController adminTableController = adminLoader.getController();
         AdminLSPController controller = adminLSPLoader.getController();
+
         controller.setAdminModel(adminModel);
         adminTableController.setAdminModel(adminModel);
 
-        adminModel.setStackPaneCenter(stackPaneCenter);
+        adminModel.setTreeTableView(adminTableController.adminTreeTable);
+        adminModel.prepareAdminTreeTableView();
+        adminModel.loadDataFromServer();
+
+        SceneTransitionAnimation sceneTransitionAnimation = new SceneTransitionAnimation();
+        sceneTransitionAnimation.hideCurrentScene(stackPaneCenter, navigatorBar, "Admin", root);
+
     }
 }
 
