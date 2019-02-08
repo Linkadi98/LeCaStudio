@@ -1,7 +1,9 @@
 package UI.Admin;
 
 import Connector.ConnectDB;
+import Models.AdminModel;
 import Objects.Admin;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableView;
 import javafx.event.ActionEvent;
@@ -25,6 +27,7 @@ public class AddingAdminController implements Initializable {
     public Connection connection;
 
     public JFXTreeTableView<Admin> tableView;
+    public JFXButton addButton;
 
     public JFXTreeTableView getTableView() {
         return tableView;
@@ -108,9 +111,20 @@ public class AddingAdminController implements Initializable {
 
     private Admin admin;
 
+    private AdminModel adminModel;
+
+    public AdminModel getAdminModel() {
+        return adminModel;
+    }
+
+    public void setAdminModel(AdminModel adminModel) {
+        this.adminModel = adminModel;
+    }
+
     public void addOnAction(ActionEvent actionEvent) {
         try {
             insertAdmin();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -140,6 +154,17 @@ public class AddingAdminController implements Initializable {
         pst.setString(8,getPermision().getText());
         pst.addBatch();
         pst.executeUpdate();
+        setAdmin(new Admin(
+                getId().getText(),
+                getLoginName().getText(),
+                getPassword().getText(),
+                getFullName().getText(),
+                getNote().getText(),
+                getPhoneNumber().getText(),
+                getEmail().getText(),
+                getPermision().getText()
+        ));
+
     }
 
     @Override

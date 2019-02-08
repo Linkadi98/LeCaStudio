@@ -1,11 +1,13 @@
 package UI.Admin;
 
 import Connector.ConnectDB;
+import Models.AdminModel;
 import Objects.Admin;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +16,7 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.util.Callback;
 
+import javax.swing.*;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -23,7 +26,15 @@ import java.util.ResourceBundle;
 
 public class AdminTableController implements Initializable {
     public JFXTreeTableView<Admin> adminTreeTable;
+    private AdminModel adminModel;
 
+    public AdminModel getAdminModel() {
+        return adminModel;
+    }
+
+    public void setAdminModel(AdminModel adminModel) {
+        this.adminModel = adminModel;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -79,6 +90,7 @@ public class AdminTableController implements Initializable {
         adminTreeTable.setRoot(treeItemRoot);
         adminTreeTable.setShowRoot(false);
 
+        adminTreeTable.addEventHandler();
     }
 
     public void addAdminsToTable(ObservableList<Admin> admins) {

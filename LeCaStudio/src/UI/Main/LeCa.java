@@ -10,7 +10,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class Main extends Application {
+public class LeCa extends Application {
     private final Model model = new Model();
     private TableModel tableModel = new TableModel();
     private TableModel tableModel2 = new TableModel();
@@ -47,6 +47,6 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-        Application.launch(Main.class, new String[0]);
+        Application.launch(LeCa.class, new String[0]);
     }
 }

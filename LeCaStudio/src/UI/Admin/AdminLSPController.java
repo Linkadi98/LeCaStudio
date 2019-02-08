@@ -1,5 +1,6 @@
 package UI.Admin;
 
+import Models.AdminModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,13 +21,25 @@ public class AdminLSPController implements Initializable {
     public HiddenSidesPane connectStatus;
     public AnchorPane adminLSP;
 
+    public AddingAdminController controller;
+
     FXMLLoader loader;
+
+    private AdminModel adminModel;
+
+    public AdminModel getAdminModel() {
+        return adminModel;
+    }
+
+    public void setAdminModel(AdminModel adminModel) {
+        this.adminModel = adminModel;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Label status = new Label("Connected");
         connectStatus.setBottom(status);
-
+        adminModel = new AdminModel();
     }
 
 
@@ -48,5 +61,7 @@ public class AdminLSPController implements Initializable {
         scene.setFill(null);
         stage.setScene(scene);
         stage.show();
+        controller = loader.getController();
+        controller.setAdminModel(adminModel);
     }
 }

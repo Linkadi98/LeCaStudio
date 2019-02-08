@@ -2,8 +2,11 @@ package UI.Main;
 
 import Animation.SceneTransitionAnimation;
 import Animation.TextChangeAnimation;
+import Models.AdminModel;
 import Models.TableModel;
 import UI.Admin.AddingAdminController;
+import UI.Admin.AdminLSPController;
+import UI.Admin.AdminTableController;
 import UI.Buttons.ButtonBoxController;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
@@ -81,6 +84,8 @@ public class MainAppController implements Initializable {
 
     private String selection;
 
+    private AdminModel adminModel;
+
     public void setTableModel(TableModel tableModel) {
         if(this.tableModel != null) {
             throw new IllegalStateException("Only one table model can be initiallized");
@@ -140,29 +145,35 @@ public class MainAppController implements Initializable {
         drawer.setDirection(JFXDrawer.DrawerDirection.LEFT);
         drawer.setOpacity(0.5);
         drawer.setDefaultDrawerSize(150.0);
-        if(tableModel == null) {
-            System.out.println("Đoạn này nó bị null");
-        }
+        adminModel = new AdminModel();
 
 
     }
 
 
     public void homeOnMousePressed(MouseEvent event) throws IOException {
+        FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/PAGES/Home.fxml"));
+        AnchorPane homeRoot = homeLoader.load();
         SceneTransitionAnimation sceneTransitionAnimation = new SceneTransitionAnimation();
-        sceneTransitionAnimation.sceneTransition(stackPaneCenter, navigatorBar, "Home");
-//        leftSidePane.getChildren().remove();
+        sceneTransitionAnimation.sceneTransition(stackPaneCenter, navigatorBar, "Home", homeLoader, homeRoot);
+//        leftSidePane.getChildren()
     }
 
     public void adminOnMousePressed(MouseEvent event) throws IOException {
+        FXMLLoader adminLoader = new FXMLLoader(getClass().getResource("/PAGES/Admin.fxml"));
+        FXMLLoader adminLSPLoader = new FXMLLoader(getClass().getResource("/LEFT_SIDE_PANE/AdminLSP.fxml"));
+        AnchorPane root = adminLoader.load();
         SceneTransitionAnimation sceneTransitionAnimation = new SceneTransitionAnimation();
 //        sceneTransitionAnimation.hideCurrentScene(stackPaneCenter);
-        sceneTransitionAnimation.sceneTransition(stackPaneCenter, navigatorBar, "Admin");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/LEFT_SIDE_PANE/AdminLSP.fxml"));
-        leftSidePane.getChildren().add(loader.load());
+        sceneTransitionAnimation.sceneTransition(stackPaneCenter, navigatorBar, "Admin", adminLoader, root);
 
+        leftSidePane.getChildren().add(adminLSPLoader.load());
+        AdminTableController adminTableController = adminLoader.getController();
+        AdminLSPController controller = adminLSPLoader.getController();
+        controller.setAdminModel(adminModel);
+        adminTableController.setAdminModel(adminModel);
 
-
+        adminModel.setStackPaneCenter(stackPaneCenter);
     }
 }
 
