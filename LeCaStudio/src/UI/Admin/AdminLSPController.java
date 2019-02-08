@@ -67,8 +67,7 @@ public class AdminLSPController implements Initializable {
                 break;
             case "UpdateAdmin":
                 updateAdminController = loader.getController();
-//                updateAdminController.setAdminModel(getAdminModel());
-//                updateAdminController.setTableView(getAdminModel().getTreeTableView());
+                updateAdminController.setAdminModel(getAdminModel());
         }
 
     }

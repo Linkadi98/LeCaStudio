@@ -124,22 +124,34 @@ public class AddingAdminController implements Initializable {
     public void addOnAction(ActionEvent actionEvent) {
         try {
             insertAdmin();
-
+            getAdminModel().getStage().hide();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-//        System.exit(0);
     }
 
     public void continueAddOnAction(ActionEvent actionEvent) {
+        try {
+            insertAdmin();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        setDefault();
     }
 
     public void cancelOnAction(ActionEvent actionEvent) {
         getAdminModel().getStage().hide();
     }
 
-    public void setDefault(String blank) {
-
+    public void setDefault() {
+        getId().setText("");
+        getEmail().setText("");
+        getFullName().setText("");
+        getLoginName().setText("");
+        getNote().setText("");
+        getPassword().setText("");
+        getPermision().setText("");
+        getPhoneNumber().setText("");
     }
 
     public void insertAdmin() throws SQLException {
@@ -159,7 +171,7 @@ public class AddingAdminController implements Initializable {
         pst.executeUpdate();
 
         getAdminModel().reloadTable();
-        getAdminModel().getStage().hide();
+
 
     }
 
