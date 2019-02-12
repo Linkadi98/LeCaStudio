@@ -1,10 +1,10 @@
-package UI.Admin;
+package Controller.Admin;
 
 import Models.AdminModel;
 import Objects.Admin;
 import com.jfoenix.controls.JFXTreeTableView;
 
-public class AdminTableController {
+public class AdminController {
     public JFXTreeTableView<Admin> adminTreeTable;
     private AdminModel adminModel;
 

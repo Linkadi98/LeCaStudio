@@ -1,4 +1,4 @@
-package UI.Main;
+package Controller.Main;
 
 import com.jfoenix.controls.JFXChipView;
 import javafx.application.Application;

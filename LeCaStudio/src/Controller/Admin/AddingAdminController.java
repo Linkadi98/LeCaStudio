@@ -1,4 +1,4 @@
-package UI.Admin;
+package Controller.Admin;
 
 import Connector.ConnectDB;
 import Models.AdminModel;

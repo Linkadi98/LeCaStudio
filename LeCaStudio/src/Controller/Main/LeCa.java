@@ -1,8 +1,8 @@
-package UI.Main;
+package Controller.Main;
 
 import Models.TableModel;
 import Objects.Admin;
-import UI.Buttons.ButtonBoxController;
+import Controller.Buttons.ButtonBoxController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

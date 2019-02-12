@@ -1,26 +1,24 @@
-package UI.Main;
+package Controller.Main;
 
 import Animation.SceneTransitionAnimation;
 import Animation.TextChangeAnimation;
 import Models.AdminModel;
 import Models.TableModel;
-import UI.Admin.AddingAdminController;
-import UI.Admin.AdminLSPController;
-import UI.Admin.AdminTableController;
-import UI.Buttons.ButtonBoxController;
+import Objects.Admin;
+import Controller.Admin.AdminLSPController;
+import Controller.Admin.AdminController;
+import Controller.Buttons.ButtonBoxController;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
+import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.Tab;
@@ -29,8 +27,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.util.Duration;
-//import UI.Buttons.*;
+import javafx.scene.paint.Paint;
+//import Controller.Buttons.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -65,6 +63,8 @@ public class MainAppController implements Initializable {
     public MenuButton employee;
     public StackPane stackPaneCenter;
     public Pane leftSidePane;
+    public JFXSpinner spinnerStatus;
+    public Label status;
 
     @FXML
     private JFXHamburger hamburger;
@@ -85,6 +85,8 @@ public class MainAppController implements Initializable {
     private String selection;
 
     private AdminModel adminModel;
+
+    private ObservableList<Admin> admins;
 
     public void setTableModel(TableModel tableModel) {
         if(this.tableModel != null) {
@@ -146,7 +148,7 @@ public class MainAppController implements Initializable {
         drawer.setOpacity(0.5);
         drawer.setDefaultDrawerSize(150.0);
         adminModel = new AdminModel();
-
+        spinnerStatus.setVisible(false);
 
     }
 
@@ -161,26 +163,56 @@ public class MainAppController implements Initializable {
     }
 
     public void adminOnMousePressed(MouseEvent event) throws IOException {
+
         adminModel = new AdminModel();
         FXMLLoader adminLoader = new FXMLLoader(getClass().getResource("/PAGES/Admin.fxml"));
         FXMLLoader adminLSPLoader = new FXMLLoader(getClass().getResource("/LEFT_SIDE_PANE/AdminLSP.fxml"));
 
         AnchorPane root = adminLoader.load();
 
-        leftSidePane.getChildren().add(adminLSPLoader.load());
-        AdminTableController adminTableController = adminLoader.getController();
-        AdminLSPController controller = adminLSPLoader.getController();
-
-        controller.setAdminModel(adminModel);
-        adminTableController.setAdminModel(adminModel);
-
-        adminModel.setTreeTableView(adminTableController.adminTreeTable);
-        adminModel.prepareAdminTreeTableView();
-        adminModel.loadDataFromServer();
-
         SceneTransitionAnimation sceneTransitionAnimation = new SceneTransitionAnimation();
         sceneTransitionAnimation.hideCurrentScene(stackPaneCenter, navigatorBar, "Admin", root);
 
+        leftSidePane.getChildren().add(adminLSPLoader.load());
+        AdminController adminController = adminLoader.getController();
+        AdminLSPController controller = adminLSPLoader.getController();
+
+        controller.setAdminModel(adminModel);
+        adminController.setAdminModel(adminModel);
+        adminModel.setTreeTableView(adminController.adminTreeTable);
+        adminModel.prepareAdminTreeTableView();
+
+//        admins = FXCollections.observableArrayList();
+        preloaderData(adminModel);
+
+    }
+
+    public void preloaderData(AdminModel adminModel) {
+        admins = FXCollections.observableArrayList();
+        Task<Void> task = new Task<>() {
+            @Override
+            protected Void call() throws Exception {
+                spinnerStatus.setVisible(true);
+                admins = adminModel.addAdminsToTable();
+                System.out.println(123445667);
+                return null;
+            }
+        };
+//        Platform.setImplicitExit(true);
+        new Thread(task).start();
+        task.setOnRunning((e -> status.setText("Đang kết nối tới server...")));
+
+        task.setOnFailed((e -> {
+            status.setText("Kết nối không thành công!");
+            spinnerStatus.setVisible(false);
+        }));
+
+        task.setOnSucceeded((e -> {
+            status.setText("Đã kết nối");
+            status.setTextFill(Paint.valueOf("#41dc0e"));
+            spinnerStatus.setVisible(false);
+        }));
+        adminModel.loadDataToTable(admins);
     }
 }
 

@@ -1,10 +1,10 @@
-package UI.Buttons;
+package Controller.Buttons;
 
 import Animation.TextChangeAnimation;
 import Models.AdminModel;
 import Models.PhotoPackageModel;
 import Models.TableModel;
-import UI.Main.Model;
+import Controller.Main.Model;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

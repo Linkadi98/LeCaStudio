@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="339.0" prefWidth="553.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.Admin.AddingAdminController">
+<AnchorPane prefHeight="339.0" prefWidth="553.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Admin.AddingAdminController">
    <children>
       <VBox layoutX="68.0" layoutY="70.0" prefHeight="200.0" prefWidth="214.0">
          <children>

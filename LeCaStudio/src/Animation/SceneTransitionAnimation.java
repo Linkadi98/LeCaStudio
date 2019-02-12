@@ -1,16 +1,12 @@
 package Animation;
 
-import UI.Main.MainAppController;
 import javafx.animation.*;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
-import java.awt.*;
 import java.io.IOException;
 
 public class SceneTransitionAnimation {

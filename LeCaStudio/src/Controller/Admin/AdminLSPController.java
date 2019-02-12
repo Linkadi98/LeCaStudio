@@ -1,4 +1,4 @@
-package UI.Admin;
+package Controller.Admin;
 
 import Models.AdminModel;
 import javafx.event.ActionEvent;
@@ -33,7 +33,6 @@ public class AdminLSPController implements Initializable {
 
     public void setAdminModel(AdminModel adminModel) {
         this.adminModel = adminModel;
-        System.out.println("Đã truyền vào AdminLSP");
     }
 
     @Override
@@ -44,7 +43,7 @@ public class AdminLSPController implements Initializable {
 
 
     public void addOnAction(ActionEvent actionEvent) throws IOException {
-        showNewStage("AddingAdmin");
+        showNewStage("AddAdmin");
     }
 
     public void updateOnAction(ActionEvent actionEvent) throws IOException {
@@ -61,7 +60,7 @@ public class AdminLSPController implements Initializable {
         getAdminModel().getStage().setScene(scene);
         getAdminModel().getStage().show();
         switch (window) {
-            case "AddingAdmin":
+            case "AddAdmin":
                 addingAdminController = loader.getController();
                 addingAdminController.setAdminModel(getAdminModel());
                 break;

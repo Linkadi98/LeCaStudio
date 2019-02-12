@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
+<?import com.jfoenix.controls.JFXSpinner?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -89,4 +90,13 @@
    <center>
       <StackPane fx:id="stackPaneCenter" prefHeight="623.0" prefWidth="922.0" BorderPane.alignment="CENTER" />
    </center>
+   <bottom>
+      <HBox prefHeight="38.0" prefWidth="1346.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane prefHeight="30.0" prefWidth="532.0" />
+            <Label fx:id="status" prefHeight="39.0" prefWidth="322.0" style="-fx-alignment: center;" text="Khởi tạo kết nối..." textFill="#41dc0e" />
+            <JFXSpinner fx:id="spinnerStatus" prefHeight="30.0" prefWidth="32.0" />
+         </children>
+      </HBox>
+   </bottom>
 </BorderPane>

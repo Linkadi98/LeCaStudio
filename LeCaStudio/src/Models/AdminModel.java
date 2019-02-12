@@ -2,27 +2,16 @@ package Models;
 
 import Connector.ConnectDB;
 import Objects.Admin;
-import UI.Admin.AddingAdminController;
-import UI.Admin.AdminTableController;
-import UI.Main.MainAppController;
-import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TreeItem;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -59,7 +48,7 @@ public class AdminModel extends TableModel {
 
     public void reloadTable () {
         adminTreeTableView.setRoot(null);
-        loadDataFromServer();
+        loadDataToTable(addAdminsToTable());
     }
 
     public void prepareAdminTreeTableView() {
@@ -107,8 +96,8 @@ public class AdminModel extends TableModel {
 
     }
 
-    public void loadDataFromServer() {
-        TreeItem<Admin> treeItemRoot = new RecursiveTreeItem<>(addAdminsToTable(), RecursiveTreeObject::getChildren);
+    public void loadDataToTable(ObservableList<Admin> admins) {
+        TreeItem<Admin> treeItemRoot = new RecursiveTreeItem<>(admins, RecursiveTreeObject::getChildren);
         adminTreeTableView.setRoot(treeItemRoot);
         adminTreeTableView.setShowRoot(false);
     }
@@ -135,7 +124,7 @@ public class AdminModel extends TableModel {
                 ));
             }
         } catch (SQLException e) {
-            System.out.println("Unsucessful");
+            System.out.println("Không thể load được dữ liệu");
         }
         return admins;
     }
